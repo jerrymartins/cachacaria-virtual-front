@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --inline --hot --progress --port 8080",
-    "build": "NODE_ENV=production webpack --config config/webpack.prod.js"
+    "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
+    "serve": "yarn build && serve -s dist"
   },
   "dependencies": {
     "@angular/animations": "~6.1.10",
@@ -43,6 +44,7 @@
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "sass-loader": "^7.1.0",
+    "serve": "^10.1.1",
     "style-loader": "^0.23.1",
     "styles-loader": "^1.0.0",
     "to-string-loader": "^1.1.5",
