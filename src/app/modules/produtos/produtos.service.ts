@@ -1,21 +1,11 @@
 import {Injectable, OnInit} from '@angular/core';
-import {FornecedorControllerService} from "../../api";
+
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class ProdutosService implements OnInit{
 
-    constructor(
-        private fornecedorController: FornecedorControllerService) { }
-
-    ngOnInit(): void {
-    }
-
-    public getFornecedor(){
-        this.fornecedorController.findByIdUsingGET(2).subscribe( res => {
-            console.log(res.data)
-        })
-    }
-
+  ngOnInit(): void {
+  }
 }

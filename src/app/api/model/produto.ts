@@ -15,4 +15,5 @@ export interface Produto {
     codProduto?: string;
     descricao?: string;
     id?: number;
+    preco?: number;
 }

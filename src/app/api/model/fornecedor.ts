@@ -14,6 +14,7 @@ import { Produto } from './produto';
 
 export interface Fornecedor { 
     cnpj?: string;
+    email?: string;
     id?: number;
     nome?: string;
     produtos?: Array<Produto>;

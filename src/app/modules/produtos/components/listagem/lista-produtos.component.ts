@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'lista-produtos-page',
@@ -6,4 +6,15 @@ import { Component } from '@angular/core';
     styleUrls: ['./lista-produtos.component.scss']
 })
 
-export class ListaProdutosComponent {}
+export class ListaProdutosComponent implements OnInit{
+
+
+
+    ngOnInit(): void {
+
+    }
+
+
+
+
+}

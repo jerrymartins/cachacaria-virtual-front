@@ -7,30 +7,36 @@ import { AppComponent } from './app.component';
 import {NavbarComponent} from "./shared/components/navbar/navbar.component";
 import {ApiModule} from "./api";
 import {HttpClientModule} from "@angular/common/http";
+import {FornecedoresComponent} from "./modules/fornecedores/fornecedores.component";
 import {ListaFornecedoresComponent} from "./modules/fornecedores/components/listagem/lista-fornecedores.component";
 import {CadastroFornecedoresComponent} from "./modules/fornecedores/components/cadastro/cadastro-fornecedores.component";
+import {ProdutosComponent} from "./modules/produtos/produtos.component";
 import {ListaProdutosComponent} from "./modules/produtos/components/listagem/lista-produtos.component";
 import {CadastroProdutosComponent} from "./modules/produtos/components/cadastro/cadastro-produtos.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ListaFornecedoresComponent,
-        CadastroFornecedoresComponent,
-        ListaProdutosComponent,
-        CadastroProdutosComponent,
-        NavbarComponent
-    ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        AppRoutingModule,
-        ApiModule
-    ],
-    providers: [],
-    bootstrap: [
-        AppComponent
-    ]
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FornecedoresComponent,
+    ListaFornecedoresComponent,
+    CadastroFornecedoresComponent,
+    ProdutosComponent,
+    ListaProdutosComponent,
+    CadastroProdutosComponent
+  ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    ApiModule,
+    NgxPaginationModule
+  ],
+  providers: [],
+  bootstrap: [
+    AppComponent
+  ]
 })
 
 export class AppModule {}

@@ -12,13 +12,6 @@
     rxjs "6.2.2"
     source-map "0.5.7"
 
-"@angular/animations@~6.1.10":
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-6.1.10.tgz#4ab9b9a6c25e0cca781588700daa9efc33a722e4"
-  integrity sha512-dd/lq7kw3uwfHPICan8psu2nthuUpp7PvMLuNIm0XxObZ4oNs0ls6uxKEDPnEkRKoGdiJpvmsyzZZN9ACMPEAA==
-  dependencies:
-    tslib "^1.9.0"
-
 "@angular/common@~6.1.10":
   version "6.1.10"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-6.1.10.tgz#96e01564031b23cf54e4264e4c9defd6e10a0e11"
@@ -4880,6 +4873,11 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
+
+ngx-pagination@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.2.1.tgz#d82fe15b03a628621dabb835ebc90011f2557689"
+  integrity sha512-+dprQkYoiNYDZkNAe/1HX0wDFbwCTE31mC2bEQVdI7ZbjEIvGB7R3zp5QoCKgz6cPFatUj4Iw6Ukqp5zx0oT/Q==
 
 nice-try@^1.0.4:
   version "1.0.5"

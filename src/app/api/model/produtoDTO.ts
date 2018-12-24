@@ -17,4 +17,5 @@ export interface ProdutoDTO {
     descricao?: string;
     fornecedor?: Fornecedor;
     id?: number;
+    preco?: number;
 }

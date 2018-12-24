@@ -13,6 +13,7 @@
 
 export interface FornecedorDTO { 
     cnpj?: string;
+    email?: string;
     id?: number;
     nome?: string;
 }
