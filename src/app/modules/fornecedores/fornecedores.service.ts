@@ -1,5 +1,10 @@
 import {Injectable, OnInit} from '@angular/core';
-import {FornecedorControllerService, FornecedorDTO, Pageable, PageFornecedorDTO, Sort} from "../../api";
+import {
+  FornecedorControllerService,
+  FornecedorDTO,
+  PageFornecedorDTO,
+  ResponseFornecedorDTO,
+} from "../../api";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -26,6 +31,14 @@ export class FornecedoresService implements OnInit{
 
   public deleteById(id: number){
     return this.fornecedorController.deleteByIdUsingDELETE(id);
+  }
+
+  public save(fornecedor: FornecedorDTO): Observable<ResponseFornecedorDTO>{
+    return this.fornecedorController.saveUsingPOST(fornecedor);
+  }
+
+  public update(fornecedor: FornecedorDTO): Observable<ResponseFornecedorDTO>{
+    return this.fornecedorController.updateUsingPUT(fornecedor);
   }
 
 }

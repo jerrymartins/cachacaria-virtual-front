@@ -275,7 +275,7 @@ export class ProdutoControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<ResponseProdutoDTO>(`${this.basePath}/produtos/`,
+        return this.httpClient.post<ResponseProdutoDTO>(`${this.basePath}/produtos/produto`,
             produtoDTO,
             {
                 withCredentials: this.configuration.withCredentials,

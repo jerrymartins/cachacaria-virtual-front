@@ -474,6 +474,11 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
+angular-notifier@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/angular-notifier/-/angular-notifier-4.1.1.tgz#127e6c50acab9fe70e784d0e7f4996860f8f93a0"
+  integrity sha512-QrL5cW3GDjONy6Ack+HIgd3tUf93ztkPT6C551/pqOaE69Ad2YDem+JyBLnlLKBnCFUxhKkSVnv/Ak2HsOrBxQ==
+
 angular2-router-loader@^0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/angular2-router-loader/-/angular2-router-loader-0.3.5.tgz#2b18fa9683e0e8aab3e942f5d93a11d63c37c303"

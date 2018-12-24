@@ -1,3 +1,4 @@
+<h3>Fornecedores</h3>
 <table>
   <thead>
   <tr>
@@ -17,6 +18,7 @@
     <td>{{fornecedor.email}}</td>
     <td>{{fornecedor.cnpj}}</td>
     <td><a class="btn-floating waves-light red" (click)="deleteById(fornecedor.id)"><i class="material-icons">delete</i></a></td>
+    <td><a class="btn-floating waves-light blue-grey" (click)="update(fornecedor)"><i class="material-icons">edit</i></a></td>
   </tr>
 
   </tbody>

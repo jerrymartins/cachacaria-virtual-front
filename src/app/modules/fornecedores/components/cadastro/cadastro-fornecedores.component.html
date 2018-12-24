@@ -1,22 +1,24 @@
-<h3>Cadastrar Fornecedor</h3>
+<h3>{{action}}</h3>
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="row">
+            <input type="hidden" value="">
             <div class="input-field col s6">
-                <input placeholder="Placeholder" id="nome_fornecedor" type="text" class="validate">
+                <input id="nome_fornecedor" type="text" class="validate" formControlName="nome">
                 <label for="nome_fornecedor">Fornecedor</label>
             </div>
             <div class="input-field col s6">
-                <input id="cnpj" type="text" class="validate">
+                <input id="cnpj" type="text" class="validate" formControlName="cnpj">
                 <label for="cnpj">Cnpj</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
+                <input id="email" type="email" class="validate" formControlName="email">
                 <label for="email">Email</label>
             </div>
         </div>
+        <button type="submit" [disabled]="!form.valid">Submit</button>
     </form>
 </div>

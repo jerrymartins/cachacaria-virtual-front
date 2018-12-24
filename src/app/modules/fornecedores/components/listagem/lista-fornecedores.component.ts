@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FornecedoresService} from "../../fornecedores.service";
 import {PageRequest} from "../../../../utils/page-request";
-import {PageFornecedorDTO} from "../../../../api";
+import {FornecedorDTO, PageFornecedorDTO} from "../../../../api";
+import {NotifierService} from "angular-notifier";
+import {Messages} from "../../../../utils/Messages";
+import {TypeMessages} from "../../../../utils/TypeMessages";
 
 @Component({
     selector: 'lista-fornecedores-page',
@@ -11,12 +14,18 @@ import {PageFornecedorDTO} from "../../../../api";
 
 export class ListaFornecedoresComponent implements OnInit{
 
+    @Output() fornecedorUpdate = new EventEmitter();
+
     private pageRequest: PageRequest;
     private fornecedores: PageFornecedorDTO;
+    private readonly notifier: NotifierService;
 
 
-    constructor(private fornecedorService: FornecedoresService){
+    constructor(private fornecedorService: FornecedoresService,
+                notifierService: NotifierService
+    ){
         this.pageRequest = new PageRequest(0,'id', 'DESC', 0, 0);
+        this.notifier = notifierService;
     }
 
     ngOnInit(): void {
@@ -44,5 +53,16 @@ export class ListaFornecedoresComponent implements OnInit{
         }, err => console.log(err));
     }
 
+    public update(fornecedor: FornecedorDTO){
+
+        this.fornecedorUpdate.emit(fornecedor);
+        // this.fornecedorService.update(fornecedor).subscribe(res => {
+        //     this.notifier.notify( TypeMessages.sucess, Messages.providerUpdatedSucess );
+        //     this.getAllPaginated();
+        // }, err => {
+        //     this.notifier.notify( TypeMessages.error, Messages.providerUpdatedFail )
+        // })
+
+    }
 
 }

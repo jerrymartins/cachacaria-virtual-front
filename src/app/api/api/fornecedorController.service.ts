@@ -275,7 +275,7 @@ export class FornecedorControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<ResponseFornecedorDTO>(`${this.basePath}/fornecedores/`,
+        return this.httpClient.post<ResponseFornecedorDTO>(`${this.basePath}/fornecedores/fornecedor`,
             fornecedorDTO,
             {
                 withCredentials: this.configuration.withCredentials,

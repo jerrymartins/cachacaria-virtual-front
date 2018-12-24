@@ -14,6 +14,8 @@ import {ProdutosComponent} from "./modules/produtos/produtos.component";
 import {ListaProdutosComponent} from "./modules/produtos/components/listagem/lista-produtos.component";
 import {CadastroProdutosComponent} from "./modules/produtos/components/cadastro/cadastro-produtos.component";
 import {NgxPaginationModule} from "ngx-pagination";
+import {ReactiveFormsModule} from "@angular/forms";
+import {NotifierModule} from "angular-notifier";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {NgxPaginationModule} from "ngx-pagination";
     BrowserModule,
     AppRoutingModule,
     ApiModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [
