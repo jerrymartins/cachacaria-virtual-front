@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './shared/components/home/home.component';
+import { ListaProdutosComponent } from './modules/produtos/components/listagem/lista-produtos.component';
+import {ListaFornecedoresComponent} from "./modules/fornecedores/components/listagem/lista-fornecedores.component";
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'menu', loadChildren: './modules/menu/menu.module#MenuModule' }
+    { path: 'produtos', component: ListaProdutosComponent },
+    { path: 'fornecedores', component: ListaFornecedoresComponent }
 ];
 
 @NgModule({

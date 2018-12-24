@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {ListaFornecedoresComponent} from "../fornecedores/components/listagem/lista-fornecedores.component";
 
-import { MenuComponent } from './components/menu/menu.component';
 
 const appRoutes: Routes = [
-    { path: '', component: MenuComponent }
+    // { path: '', component: ListaFornecedoresComponent }
 ];
 
 @NgModule({
@@ -17,4 +17,4 @@ const appRoutes: Routes = [
 })
 
 
-export class MenuRoutingModule {}
+export class ProdutosRoutingModule {}

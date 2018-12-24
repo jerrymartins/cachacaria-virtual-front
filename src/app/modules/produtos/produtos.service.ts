@@ -4,7 +4,7 @@ import {FornecedorControllerService} from "../../api";
 @Injectable({
     providedIn: 'root',
 })
-export class MenuService implements OnInit{
+export class ProdutosService implements OnInit{
 
     constructor(
         private fornecedorController: FornecedorControllerService) { }
