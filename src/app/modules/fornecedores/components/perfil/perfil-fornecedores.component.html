@@ -6,10 +6,10 @@
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <p>{{fornecedorProfile.nome}}</p>
-        <p>Cnpj: {{fornecedorProfile.cnpj}}</p>
-        <p>Contato: {{fornecedorProfile.email}}</p>
-        <p>Total de itens: {{fornecedorProfile.produtos.length}}</p>
+        <p>{{fornecedorProfile?.nome}}</p>
+        <p>Cnpj: {{fornecedorProfile?.cnpj}}</p>
+        <p>Contato: {{fornecedorProfile?.email}}</p>
+        <p>Total de itens: {{fornecedorProfile?.produtos?.length}}</p>
       </div>
       <div class="card-action">
         <a >Cadastrar produto</a>
@@ -18,4 +18,4 @@
   </div>
 </div>
 
-<lista-produtos-page [idFornecedor]="fornecedorProfile.id" [ItemsPerPage]="4" (updateList)="updateProfile($event)"></lista-produtos-page>
+<lista-produtos-page [idFornecedor]="fornecedorProfile.id"></lista-produtos-page>

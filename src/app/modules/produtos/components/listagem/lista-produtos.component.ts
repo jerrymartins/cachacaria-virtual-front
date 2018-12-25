@@ -39,8 +39,7 @@ export class ListaProdutosComponent implements OnInit{
 
     public deleteById(id: number){
         this.produtoService.deleteById(id).subscribe(res => {
-            console.log(res)
-            this.updateList.emit(true);
+            this.findByIdFornecedor(this.idFornecedor, this.pageRequest);
         }, err => {
             console.log(err)
         });
