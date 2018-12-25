@@ -71,9 +71,3 @@ export class ListaFornecedoresComponent implements OnInit{
     }
 
 }
-// this.fornecedorService.update(fornecedor).subscribe(res => {
-//     this.notifier.notify( TypeMessages.sucess, Messages.providerUpdatedSucess );
-//     this.getAllPaginated();
-// }, err => {
-//     this.notifier.notify( TypeMessages.error, Messages.providerUpdatedFail )
-// })

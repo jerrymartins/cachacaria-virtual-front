@@ -1,6 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {PageProdutoDTO, ProdutoControllerService, ProdutoDTO, ResponseProdutoDTO} from "../../api";
 import {Observable} from "rxjs";
+import {PageRequest} from "../../utils/page-request";
 
 
 @Injectable({
@@ -25,12 +26,16 @@ export class ProdutosService implements OnInit{
     return this.produtoController.deleteUsingDELETE(id);
   }
 
-  public findAll(): Observable<PageProdutoDTO>{
-    return this.produtoController.findAllUsingGET1();
+  public findAll(pageRequest: PageRequest): Observable<PageProdutoDTO>{
+    return this.produtoController.findAllUsingGET1(pageRequest.page, pageRequest.order, pageRequest.dir);
   }
 
   public findById(id: number): Observable<ResponseProdutoDTO>{
     return this.produtoController.findByIdUsingGET1(id);
+  }
+
+  public findByIdForncedor(idFornecedor: number, pageRequest: PageRequest): Observable<PageProdutoDTO>{
+    return this.produtoController.findAllByFornecedorUsingGET(idFornecedor, pageRequest.page, pageRequest.order, pageRequest.dir);
   }
 
   public update(produto: ProdutoDTO): Observable<ResponseProdutoDTO>{

@@ -18,4 +18,4 @@
   </div>
 </div>
 
-<lista-produtos-page [produtos]="fornecedorProfile.produtos" [ItemsPerPage]="4" (updateList)="updateProfile($event)"></lista-produtos-page>
+<lista-produtos-page [idFornecedor]="fornecedorProfile.id" [ItemsPerPage]="4" (updateList)="updateProfile($event)"></lista-produtos-page>

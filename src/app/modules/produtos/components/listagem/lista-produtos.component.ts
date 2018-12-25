@@ -1,7 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ProdutoDTO} from "../../../../api";
+import {PageProdutoDTO, ProdutoDTO} from "../../../../api";
 import {FornecedoresService} from "../../../fornecedores/fornecedores.service";
 import {ProdutosService} from "../../produtos.service";
+import {PageRequest} from "../../../../utils/page-request";
+import {NotifierService} from "angular-notifier";
 
 @Component({
     selector: 'lista-produtos-page',
@@ -10,21 +12,29 @@ import {ProdutosService} from "../../produtos.service";
 })
 
 export class ListaProdutosComponent implements OnInit{
-    @Input() produtos: Array<ProdutoDTO>;
+    @Input() idFornecedor: number;
     @Input() ItemsPerPage: number;
-
     @Output() updateList = new EventEmitter();
 
-    public p: number;
+    private produtos: PageProdutoDTO;
+    private pageRequest: PageRequest;
+    private readonly notifier: NotifierService;
 
     constructor(
-      private produtoService: ProdutosService
-    ){
-
+      private produtoService: ProdutosService,
+      notifierService: NotifierService)
+    {
+        this.pageRequest = new PageRequest(0,'id', 'DESC', 0, 0);
+        this.notifier = notifierService;
     }
 
     ngOnInit(): void {
-        console.log(this.produtos)
+        console.log(this.idFornecedor)
+        if (!this.idFornecedor) {
+            this.getAllPaginated();
+        } else {
+            this.findByIdFornecedor(this.idFornecedor, this.pageRequest);
+        }
     }
 
     public deleteById(id: number){
@@ -36,5 +46,29 @@ export class ListaProdutosComponent implements OnInit{
         });
     }
 
-    public findAll()
+    public getAllPaginated(){
+        this.produtoService.findAll(this.pageRequest).subscribe(produtos => {
+            this.produtos = produtos;
+            this.pageRequest.size = produtos.size;
+            this.pageRequest.totalElements = produtos.totalElements;
+
+        }, err => console.log(err));
+    }
+
+    public findByIdFornecedor(idFornecedor: number, pageRequest: PageRequest){
+        this.produtoService.findByIdForncedor(idFornecedor, this.pageRequest).subscribe( produtos => {
+            this.produtos = produtos;
+            this.pageRequest.size = produtos.size;
+            this.pageRequest.totalElements = produtos.totalElements;
+        }, err => console.log(err));
+    }
+
+    public pageChanged(page: number){
+        this.pageRequest.page = page;
+        if (!this.idFornecedor) {
+            this.getAllPaginated();
+        } else {
+            this.findByIdFornecedor(this.idFornecedor, this.pageRequest);
+        }
+    }
 }

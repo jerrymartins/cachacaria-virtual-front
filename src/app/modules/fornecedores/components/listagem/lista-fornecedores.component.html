@@ -12,7 +12,7 @@
   <tr *ngFor="let fornecedor of fornecedores?.content | paginate: { id: 'foo',
                                                                     itemsPerPage: pageRequest?.size,
                                                                     currentPage: pageRequest?.page + 1,
-                                                                    totalItems: pageRequest.totalElements}">
+                                                                    totalItems: pageRequest?.totalElements}">
 
     <td (click)="show(fornecedor)"><a class="">{{fornecedor.nome}}</a></td>
     <td>{{fornecedor.email}}</td>
