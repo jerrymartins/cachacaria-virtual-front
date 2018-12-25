@@ -9,8 +9,9 @@ import {ProdutoDTO} from "../../../../api";
 
 export class ListaProdutosComponent implements OnInit{
     @Input() produtos: Array<ProdutoDTO>;
-    public p: number;
+    @Input()  maxItemsPerPage: number;
 
+    public p: number;
 
     ngOnInit(): void {
         console.log(this.produtos)

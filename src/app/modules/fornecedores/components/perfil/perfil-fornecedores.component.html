@@ -9,6 +9,7 @@
         <p>{{fornecedorProfile.nome}}</p>
         <p>Cnpj: {{fornecedorProfile.cnpj}}</p>
         <p>Contato: {{fornecedorProfile.email}}</p>
+        <p>Total de itens: {{fornecedorProfile.produtos.length}}</p>
       </div>
       <div class="card-action">
         <a >Cadastrar produto</a>
@@ -17,4 +18,4 @@
   </div>
 </div>
 
-<lista-produtos-page [produtos]="fornecedorProfile.produtos"></lista-produtos-page>
+<lista-produtos-page [produtos]="fornecedorProfile.produtos" [maxItemsPerPage]="4"></lista-produtos-page>
