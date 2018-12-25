@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ProdutoDTO} from "../../../../api";
 
 @Component({
     selector: 'lista-produtos-page',
@@ -7,11 +8,12 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class ListaProdutosComponent implements OnInit{
-
+    @Input() produtos: Array<ProdutoDTO>;
+    public p: number;
 
 
     ngOnInit(): void {
-
+        console.log(this.produtos)
     }
 
 

@@ -1,1 +1,22 @@
-<h1>Listagem de produtos</h1>
+<div class="row">
+  <div class="col s6 m7" *ngFor="let produto of produtos | paginate: { itemsPerPage: 4, currentPage: p }">
+    <div class="card horizontal" >
+      <div class="card-image">
+        <img src="../../../../static/10414.jpg" style="max-width: 100px;">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>{{produto.descricao}}</p>
+          <p>{{produto.preco}}</p>
+          <p>{{produto.codProduto}}</p>
+        </div>
+        <div class="card-action">
+          <a>Editar</a> | <a> Remover</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
