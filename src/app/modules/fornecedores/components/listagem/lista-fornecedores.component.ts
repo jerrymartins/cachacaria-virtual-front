@@ -3,8 +3,8 @@ import {FornecedoresService} from "../../fornecedores.service";
 import {PageRequest} from "../../../../utils/page-request";
 import {FornecedorDTO, PageFornecedorDTO} from "../../../../api";
 import {NotifierService} from "angular-notifier";
-import {Messages} from "../../../../utils/Messages";
 import {TypeMessages} from "../../../../utils/TypeMessages";
+import {Messages} from "../../../../utils/Messages";
 
 @Component({
     selector: 'lista-fornecedores-page',
@@ -15,6 +15,7 @@ import {TypeMessages} from "../../../../utils/TypeMessages";
 export class ListaFornecedoresComponent implements OnInit{
 
     @Output() fornecedorUpdate = new EventEmitter();
+    @Output() fornecedorClear = new EventEmitter();
 
     private pageRequest: PageRequest;
     private fornecedores: PageFornecedorDTO;
@@ -41,28 +42,33 @@ export class ListaFornecedoresComponent implements OnInit{
         this.fornecedorService.getAll(this.pageRequest.page, this.pageRequest.order, this.pageRequest.dir).
         subscribe(fornecedores => {
             this.fornecedores = fornecedores;
-
             this.pageRequest.size = fornecedores.size;
             this.pageRequest.totalElements = fornecedores.totalElements;
+
+            this.fornecedorClear.emit(null);
         });
     }
 
     public deleteById(id: number){
         this.fornecedorService.deleteById(id).subscribe(res => {
+            this.notifier.notify( TypeMessages.sucess, Messages.providerDeletedSucess );
             this.getAllPaginated()
-        }, err => console.log(err));
+        }, err => {
+            this.notifier.notify( TypeMessages.sucess, Messages.providerDeletedSucess );
+            console.log(err);
+        });
     }
 
     public update(fornecedor: FornecedorDTO){
-
-        this.fornecedorUpdate.emit(fornecedor);
-        // this.fornecedorService.update(fornecedor).subscribe(res => {
-        //     this.notifier.notify( TypeMessages.sucess, Messages.providerUpdatedSucess );
-        //     this.getAllPaginated();
-        // }, err => {
-        //     this.notifier.notify( TypeMessages.error, Messages.providerUpdatedFail )
-        // })
-
+        if (fornecedor.id) {
+            this.fornecedorUpdate.emit(fornecedor);
+        }
     }
 
 }
+// this.fornecedorService.update(fornecedor).subscribe(res => {
+//     this.notifier.notify( TypeMessages.sucess, Messages.providerUpdatedSucess );
+//     this.getAllPaginated();
+// }, err => {
+//     this.notifier.notify( TypeMessages.error, Messages.providerUpdatedFail )
+// })

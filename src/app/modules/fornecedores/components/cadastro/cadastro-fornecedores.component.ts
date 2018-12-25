@@ -14,6 +14,7 @@ import {TypeMessages} from "../../../../utils/TypeMessages";
 
 export class CadastroFornecedoresComponent implements OnInit{
     @Input() fornecedorUpdate: FornecedorDTO;
+    @Input() clear: boolean = false;
 
     private form: FormGroup;
     private action: string;
@@ -34,33 +35,42 @@ export class CadastroFornecedoresComponent implements OnInit{
         this.notifier = notifierService;
     }
     ngOnInit(): void {
+        if (this.fornecedorUpdate) {
+            this.action = 'Atualizar Fornecedor';
+            this.fornecedor = this.fornecedorUpdate;
+
+        } else {
+            this.action = 'Cadastrar Fornecedor';
+
+            this.fornecedor.id = 0;
+            this.fornecedor.nome = '';
+            this.fornecedor.cnpj = '';
+            this.fornecedor.email = '';
+        }
+
         this.formBuild();
-        this.action = 'Cadastrar Fornecedor';
-        //console.log(this.fornecedorUpdate);
     }
 
     public formBuild(){
         this.form = this.fb.group({
-            id: [''],
-            nome: ['', Validators.required],
-            cnpj: [''],
-            email: ['', Validators.compose([
+            id: [this.fornecedor.id],
+            nome: [this.fornecedor.nome, Validators.required],
+            cnpj: [this.fornecedor.cnpj, Validators.required],
+            email: [this.fornecedor.email, Validators.compose([
                 Validators.required,
                 Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
             ])]
         });
+
+        console.log(this.fornecedor)
     }
 
     public onSubmit(){
-        this.fornecedor.nome = this.form.value.nome;
-        this.fornecedor.email = this.form.value.email;
-        this.fornecedor.cnpj = this.form.value.cnpj;
-        this.form.reset();
-
         this.fornecedorService.save(this.fornecedor).subscribe(res => {
-            this.notifier.notify( TypeMessages.sucess, Messages.providerRegisterSucess )
+            this.form.reset();
+            this.notifier.notify( TypeMessages.sucess, this.fornecedorUpdate ? Messages.providerUpdatedSucess : Messages.providerRegisterSucess )
         }, err => {
-            this.notifier.notify( TypeMessages.error, Messages.providerRegisterFail )
+            this.notifier.notify( TypeMessages.error, this.fornecedorUpdate ? Messages.providerUpdatedFail : Messages.providerRegisterFail )
         });
     }
 }

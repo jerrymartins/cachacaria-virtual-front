@@ -1,5 +1,5 @@
-<a class="waves-effect waves-light btn-large right" (click)="toggleAction('register', undefined)" *ngIf="listData">Novo Fornecedor</a>
+<a class="waves-effect waves-light btn-large right" (click)="toggleAction('register')" *ngIf="listData">Novo Fornecedor</a>
 <a class="waves-effect waves-light btn-large right" (click)="toggleAction('list')" *ngIf="registerData">Listar Fornecedores</a>
 
-<lista-fornecedores-page *ngIf="listData" (fornecedorUpdate)="updateDate($event)"></lista-fornecedores-page>
+<lista-fornecedores-page *ngIf="listData" (fornecedorUpdate)="updateDate($event)" (fornecedorClear)="clear($event)"></lista-fornecedores-page>
 <cadastro-fornecedores-page *ngIf="registerData" [fornecedorUpdate]="fornecedorUpdate"></cadastro-fornecedores-page>

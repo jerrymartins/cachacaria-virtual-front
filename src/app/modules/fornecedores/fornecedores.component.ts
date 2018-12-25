@@ -13,6 +13,7 @@ export class FornecedoresComponent {
   private fornecedorUpdate: FornecedorDTO;
 
   get listData() {
+
     return this.action === 'list';
   }
 
@@ -20,13 +21,16 @@ export class FornecedoresComponent {
     return this.action === 'register';
   }
 
-  toggleAction(type: ActionType, fornecedor?: FornecedorDTO) {
+  toggleAction(type: ActionType) {
     this.action = type;
   }
 
-  updateDate(fornecedor: FornecedorDTO){
-    console.log('update for')
+  public updateDate(fornecedor: FornecedorDTO){
     this.fornecedorUpdate = fornecedor;
     this.toggleAction('register');
+  }
+
+  public clear(event: any){
+    this.fornecedorUpdate = event;
   }
 }
