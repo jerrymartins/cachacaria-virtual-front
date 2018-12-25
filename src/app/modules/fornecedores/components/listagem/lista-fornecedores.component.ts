@@ -18,6 +18,8 @@ export class ListaFornecedoresComponent implements OnInit{
     @Output() fornecedorClear = new EventEmitter();
     @Output() fornecedorProfile = new EventEmitter();
 
+    public p: number;
+
     private pageRequest: PageRequest;
     private fornecedores: PageFornecedorDTO;
     private readonly notifier: NotifierService;

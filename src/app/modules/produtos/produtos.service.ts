@@ -1,4 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
+import {ProdutoControllerService} from "../../api";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -6,6 +8,16 @@ import {Injectable, OnInit} from '@angular/core';
 })
 export class ProdutosService implements OnInit{
 
+  constructor(
+    private produtoController: ProdutoControllerService
+  ) {
+
+  }
+
   ngOnInit(): void {
+  }
+
+  public deleteById(id: number): Observable<Response>{
+    return this.produtoController.deleteUsingDELETE(id);
   }
 }

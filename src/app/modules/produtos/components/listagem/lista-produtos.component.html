@@ -11,7 +11,7 @@
           <p>{{produto.codProduto}}</p>
         </div>
         <div class="card-action">
-          <a>Editar</a> | <a> Remover</a>
+          <a>Editar</a> | <a (click)="deleteById(produto.id)"> Remover</a>
         </div>
       </div>
     </div>

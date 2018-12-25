@@ -19,10 +19,8 @@ export class FornecedoresService implements OnInit{
 
   }
 
-  public getById(id: number){
-    this.fornecedorController.findByIdUsingGET(id).subscribe( res => {
-      console.log(res.data)
-    })
+  public getById(id: number): Observable<ResponseFornecedorDTO>{
+    return this.fornecedorController.findByIdUsingGET(id);
   }
 
   public getAll(page: number, sort: string, dir: string): Observable<PageFornecedorDTO>{
