@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Produto } from './produto';
 
 
 export interface FornecedorDTO { 
@@ -16,4 +17,5 @@ export interface FornecedorDTO {
     email?: string;
     id?: number;
     nome?: string;
+    produtos?: Array<Produto>;
 }
