@@ -55,7 +55,7 @@ export class ListaFornecedoresComponent implements OnInit{
             this.notifier.notify( TypeMessages.sucess, Messages.providerDeletedSucess );
             this.getAllPaginated()
         }, err => {
-            this.notifier.notify( TypeMessages.sucess, Messages.providerDeletedSucess );
+            this.notifier.notify( TypeMessages.error, Messages.providerDeletedFail );
             console.log(err);
         });
     }
