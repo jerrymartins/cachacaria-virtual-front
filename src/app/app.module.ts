@@ -14,14 +14,16 @@ import {ProdutosComponent} from "./modules/produtos/produtos.component";
 import {ListaProdutosComponent} from "./modules/produtos/components/listagem/lista-produtos.component";
 import {CadastroProdutosComponent} from "./modules/produtos/components/cadastro/cadastro-produtos.component";
 import {NgxPaginationModule} from "ngx-pagination";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {NotifierModule} from "angular-notifier";
+import {PerfilFornecedoresComponent} from "./modules/fornecedores/components/perfil/perfil-fornecedores.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FornecedoresComponent,
+    PerfilFornecedoresComponent,
     ListaFornecedoresComponent,
     CadastroFornecedoresComponent,
     ProdutosComponent,
@@ -35,7 +37,6 @@ import {NotifierModule} from "angular-notifier";
     ApiModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    //FormsModule,
     NotifierModule
   ],
   providers: [],

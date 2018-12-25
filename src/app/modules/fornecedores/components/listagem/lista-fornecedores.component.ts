@@ -16,6 +16,7 @@ export class ListaFornecedoresComponent implements OnInit{
 
     @Output() fornecedorUpdate = new EventEmitter();
     @Output() fornecedorClear = new EventEmitter();
+    @Output() fornecedorProfile = new EventEmitter();
 
     private pageRequest: PageRequest;
     private fornecedores: PageFornecedorDTO;
@@ -63,6 +64,10 @@ export class ListaFornecedoresComponent implements OnInit{
         if (fornecedor.id) {
             this.fornecedorUpdate.emit(fornecedor);
         }
+    }
+
+    public show(fornecedor: FornecedorDTO){
+        this.fornecedorProfile.emit(fornecedor);
     }
 
 }

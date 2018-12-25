@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {FornecedorDTO} from "../../api";
 
-export type ActionType = 'list' | 'register';
+export type ActionType = 'list' | 'register' | 'profile';
 
 @Component({
   selector: 'fornecedores-page',
@@ -10,7 +10,7 @@ export type ActionType = 'list' | 'register';
 })
 export class FornecedoresComponent {
   private action: ActionType = 'list';
-  private fornecedorUpdate: FornecedorDTO;
+  private fornecedor: FornecedorDTO;
 
   get listData() {
 
@@ -21,16 +21,25 @@ export class FornecedoresComponent {
     return this.action === 'register';
   }
 
+  get profile(){
+    return this.action === 'profile';
+  }
+
   toggleAction(type: ActionType) {
     this.action = type;
   }
 
   public updateDate(fornecedor: FornecedorDTO){
-    this.fornecedorUpdate = fornecedor;
+    this.fornecedor = fornecedor;
     this.toggleAction('register');
   }
 
   public clear(event: any){
-    this.fornecedorUpdate = event;
+    this.fornecedor = event;
+  }
+
+  public showProfile(fornecedor: FornecedorDTO){
+    this.fornecedor = fornecedor;
+    this.toggleAction('profile');
   }
 }
