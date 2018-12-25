@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FornecedorDTO} from "../../../../api";
+import {ProdutosService} from "../../../produtos/produtos.service";
 
 @Component({
     selector: 'perfil-fornecedores-page',
@@ -10,14 +11,19 @@ import {FornecedorDTO} from "../../../../api";
 export class PerfilFornecedoresComponent implements OnInit{
     @Input() fornecedorProfile: FornecedorDTO;
 
-    public fornecedorId: number;
+    public totalItens: number;
 
-    constructor(){
+    constructor(private produtoService: ProdutosService){
 
     }
 
     ngOnInit(): void {
-        this.fornecedorId = this.fornecedorProfile.id;
+        this.getTotalItens();
+    }
+
+    public getTotalItens(){
+        this.produtoService.countTotalItensByFornecedor(this.fornecedorProfile.id).subscribe( res => this.totalItens = res);
+        console.log('teste')
     }
 
 }

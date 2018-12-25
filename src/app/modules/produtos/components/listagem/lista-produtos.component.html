@@ -14,8 +14,8 @@
       <div class="card-stacked">
         <div class="card-content">
           <p>{{produto.descricao}}</p>
-          <p>{{produto.preco}}</p>
-          <p>{{produto.codProduto}}</p>
+          <p>preco: {{produto.preco | currency:'BRL'}}</p>
+          <p>cód: {{produto.codProduto}}</p>
         </div>
         <div *ngIf="admin" class="card-action">
           <a>Editar</a> | <a (click)="deleteById(produto.id)"> Remover</a>

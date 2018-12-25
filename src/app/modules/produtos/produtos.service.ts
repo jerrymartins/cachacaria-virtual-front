@@ -37,6 +37,9 @@ export class ProdutosService implements OnInit{
   public findByIdForncedor(idFornecedor: number, pageRequest: PageRequest): Observable<PageProdutoDTO>{
     return this.produtoController.findAllByFornecedorUsingGET(idFornecedor, pageRequest.page, pageRequest.order, pageRequest.dir);
   }
+  public countTotalItensByFornecedor(idFornecedor: number): Observable<number>{
+    return this.produtoController.countByFornecedorUsingGET(idFornecedor);
+  }
 
   public update(produto: ProdutoDTO): Observable<ResponseProdutoDTO>{
     return this.produtoController.updateUsingPUT1(produto);

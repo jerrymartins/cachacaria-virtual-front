@@ -17,6 +17,7 @@ export class ListaProdutosComponent implements OnInit{
   @Input() idFornecedor: number;
   @Input() ItemsPerPage: number;
   @Output() updateList = new EventEmitter();
+  @Output() updateTotalItens = new EventEmitter();
 
   private produtos: PageProdutoDTO;
   private pageRequest: PageRequest;
@@ -47,6 +48,7 @@ export class ListaProdutosComponent implements OnInit{
     this.produtoService.deleteById(id).subscribe(res => {
       this.findByIdFornecedor(this.idFornecedor, this.pageRequest);
       this.notifier.notify( TypeMessages.sucess, Messages.productDeleteSucess );
+      this.updateTotalItens.emit(true);
     }, err => {
       console.log(err)
       this.notifier.notify( TypeMessages.sucess, Messages.productDeleteFail );
