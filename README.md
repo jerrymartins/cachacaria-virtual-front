@@ -24,7 +24,7 @@ Como utilizar:
    5. Swagger
    
  - FRONT
-   1. Angular 7
+   1. Angular 6
    2. Materialize css
    3. Sass
    4. Yarn 
