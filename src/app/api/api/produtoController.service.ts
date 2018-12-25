@@ -101,6 +101,66 @@ export class ProdutoControllerService {
     }
 
     /**
+     * findAllByFornecedor
+     * 
+     * @param fornecedorId fornecedorId
+     * @param pag pag
+     * @param ord ord
+     * @param dir dir
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public findAllByFornecedorUsingGET(fornecedorId: number, pag?: number, ord?: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<PageProdutoDTO>;
+    public findAllByFornecedorUsingGET(fornecedorId: number, pag?: number, ord?: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PageProdutoDTO>>;
+    public findAllByFornecedorUsingGET(fornecedorId: number, pag?: number, ord?: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PageProdutoDTO>>;
+    public findAllByFornecedorUsingGET(fornecedorId: number, pag?: number, ord?: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (fornecedorId === null || fornecedorId === undefined) {
+            throw new Error('Required parameter fornecedorId was null or undefined when calling findAllByFornecedorUsingGET.');
+        }
+
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (pag !== undefined && pag !== null) {
+            queryParameters = queryParameters.set('pag', <any>pag);
+        }
+        if (ord !== undefined && ord !== null) {
+            queryParameters = queryParameters.set('ord', <any>ord);
+        }
+        if (dir !== undefined && dir !== null) {
+            queryParameters = queryParameters.set('dir', <any>dir);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+
+        return this.httpClient.get<PageProdutoDTO>(`${this.basePath}/produtos/produtos/fornecedorId/${encodeURIComponent(String(fornecedorId))}`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * findAll
      * 
      * @param pag pag
