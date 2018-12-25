@@ -25,6 +25,4 @@ export class PerfilFornecedoresComponent implements OnInit{
             this.fornecedorProfile = res.data;
         })
     }
-
-
 }

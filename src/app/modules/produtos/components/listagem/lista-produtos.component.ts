@@ -35,4 +35,6 @@ export class ListaProdutosComponent implements OnInit{
             console.log(err)
         });
     }
+
+    public findAll()
 }
