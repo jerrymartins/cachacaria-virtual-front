@@ -11,7 +11,7 @@
   <tbody>
   <tr *ngFor="let fornecedor of fornecedores?.content | paginate: { id: 'foo',
                                                                     itemsPerPage: pageRequest?.size,
-                                                                    currentPage: pageRequest?.page,
+                                                                    currentPage: pageRequest?.page + 1,
                                                                     totalItems: pageRequest.totalElements}">
 
     <td (click)="show(fornecedor)"><a class="">{{fornecedor.nome}}</a></td>
@@ -25,7 +25,7 @@
 </table>
 
 <pagination-controls  id="foo"
-                      (pageChange)="pageChanged($event)"
+                      (pageChange)="pageChanged($event -1)"
                       directionLinks="true"
                       autoHide="true">
 </pagination-controls>

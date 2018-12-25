@@ -18,8 +18,6 @@ export class ListaFornecedoresComponent implements OnInit{
     @Output() fornecedorClear = new EventEmitter();
     @Output() fornecedorProfile = new EventEmitter();
 
-    public p: number;
-
     private pageRequest: PageRequest;
     private fornecedores: PageFornecedorDTO;
     private readonly notifier: NotifierService;
@@ -37,7 +35,7 @@ export class ListaFornecedoresComponent implements OnInit{
     }
 
     public pageChanged(page: number){
-        this.pageRequest.page = page - 1;
+        this.pageRequest.page = page;
         this.getAllPaginated();
     }
 
