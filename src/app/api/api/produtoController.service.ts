@@ -344,14 +344,19 @@ export class ProdutoControllerService {
     /**
      * save
      * 
+     * @param fornecedorId fornecedorId
      * @param produtoDTO produtoDTO
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public saveUsingPOST1(produtoDTO: ProdutoDTO, observe?: 'body', reportProgress?: boolean): Observable<ResponseProdutoDTO>;
-    public saveUsingPOST1(produtoDTO: ProdutoDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResponseProdutoDTO>>;
-    public saveUsingPOST1(produtoDTO: ProdutoDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResponseProdutoDTO>>;
-    public saveUsingPOST1(produtoDTO: ProdutoDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public saveUsingPOST1(fornecedorId: number, produtoDTO: ProdutoDTO, observe?: 'body', reportProgress?: boolean): Observable<ResponseProdutoDTO>;
+    public saveUsingPOST1(fornecedorId: number, produtoDTO: ProdutoDTO, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ResponseProdutoDTO>>;
+    public saveUsingPOST1(fornecedorId: number, produtoDTO: ProdutoDTO, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ResponseProdutoDTO>>;
+    public saveUsingPOST1(fornecedorId: number, produtoDTO: ProdutoDTO, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (fornecedorId === null || fornecedorId === undefined) {
+            throw new Error('Required parameter fornecedorId was null or undefined when calling saveUsingPOST1.');
+        }
 
         if (produtoDTO === null || produtoDTO === undefined) {
             throw new Error('Required parameter produtoDTO was null or undefined when calling saveUsingPOST1.');
@@ -377,7 +382,7 @@ export class ProdutoControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<ResponseProdutoDTO>(`${this.basePath}/produtos/produto`,
+        return this.httpClient.post<ResponseProdutoDTO>(`${this.basePath}/produtos/produto/fornecedorId/${encodeURIComponent(String(fornecedorId))}`,
             produtoDTO,
             {
                 withCredentials: this.configuration.withCredentials,

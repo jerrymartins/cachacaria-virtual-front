@@ -18,8 +18,8 @@ export class ProdutosService implements OnInit{
   ngOnInit(): void {
   }
 
-  public save(produto: ProdutoDTO): Observable<ResponseProdutoDTO>{
-    return this.produtoController.saveUsingPOST1(produto);
+  public save(fornecedorId: number, produto: ProdutoDTO): Observable<ResponseProdutoDTO>{
+    return this.produtoController.saveUsingPOST1(fornecedorId, produto);
   }
 
   public deleteById(id: number): Observable<Response>{

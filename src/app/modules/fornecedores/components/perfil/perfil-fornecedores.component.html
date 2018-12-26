@@ -18,5 +18,14 @@
   </div>
 </div>
 
-<lista-produtos-page (updateProdutoEvent)="enableFormProduct($event)" (updateTotalItens)="getTotalItens()" [idFornecedor]="fornecedorProfile.id" *ngIf="!enableFormProductBoolean"></lista-produtos-page>
-<cadastro-produtos-page (disableFormProduct)="disableFormProduct($event)" [produtoUpdate]="productUpdate" *ngIf="enableFormProductBoolean"></cadastro-produtos-page>
+<lista-produtos-page
+        (updateProdutoEvent)="enableFormProduct($event)"
+        (updateTotalItens)="getTotalItens()"
+        [idFornecedor]="fornecedorProfile.id"
+        *ngIf="!enableFormProductBoolean"></lista-produtos-page>
+
+<cadastro-produtos-page
+        (disableFormProduct)="disableFormProduct($event)"
+        [produtoUpdate]="productUpdate"
+        [fornecedorId]="fornecedorProfile.id"
+        *ngIf="enableFormProductBoolean"></cadastro-produtos-page>
