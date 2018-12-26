@@ -4,27 +4,19 @@
     <div class="row">
       <input type="hidden" formControlName="id">
       <div class="input-field col s6">
-        <input id="nome_fornecedor" type="text" class="validate" formControlName="nome" [(ngModel)]="fornecedor.nome">
-        <label for="nome_fornecedor">Fornecedor</label>
+        <input id="desccricao" type="text" class="validate" formControlName="descricao" [(ngModel)]="produto.descricao">
+        <label for="desccricao">Descrição</label>
       </div>
       <div class="input-field col s6">
-        <input id="cnpj" type="text" class="validate" formControlName="cnpj" [(ngModel)]="fornecedor.cnpj">
-        <label for="cnpj">Cnpj</label>
+        <input id="codProduto" type="text" class="validate" formControlName="codProduto" [(ngModel)]="produto.codProduto">
+        <label for="codProduto">Cód</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="preco" type="text" class="validate" formControlName="preco" [(ngModel)]="produto.preco">
+        <label for="preco">Preço</label>
       </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="email" type="email" class="validate" formControlName="email" [(ngModel)]="fornecedor.email">
-        <label for="email">Email</label>
-      </div>
-    </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </div>
-
-
-"codProduto": "string",
-"descricao": "string",
-"id": 0,
-"preco": 0

@@ -61,8 +61,6 @@ export class CadastroFornecedoresComponent implements OnInit{
                 Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
             ])]
         });
-
-        console.log(this.fornecedor)
     }
 
     public onSubmit(){

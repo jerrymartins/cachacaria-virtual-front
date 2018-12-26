@@ -18,7 +18,7 @@
           <p>cód: {{produto.codProduto}}</p>
         </div>
         <div *ngIf="admin" class="card-action">
-          <a>Editar</a> | <a (click)="deleteById(produto.id)"> Remover</a>
+          <a (click)="updateProduto(produto)">Editar</a> | <a (click)="deleteById(produto.id)"> Remover</a>
         </div>
       </div>
     </div>

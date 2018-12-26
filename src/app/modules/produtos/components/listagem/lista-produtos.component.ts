@@ -18,6 +18,7 @@ export class ListaProdutosComponent implements OnInit{
   @Input() ItemsPerPage: number;
   @Output() updateList = new EventEmitter();
   @Output() updateTotalItens = new EventEmitter();
+  @Output() updateProdutoEvent = new EventEmitter();
 
   private produtos: PageProdutoDTO;
   private pageRequest: PageRequest;
@@ -53,6 +54,10 @@ export class ListaProdutosComponent implements OnInit{
       console.log(err)
       this.notifier.notify( TypeMessages.sucess, Messages.productDeleteFail );
     });
+  }
+
+  public updateProduto(produto: ProdutoDTO){
+    this.updateProdutoEvent.emit(produto);
   }
 
   public getAllPaginated(){

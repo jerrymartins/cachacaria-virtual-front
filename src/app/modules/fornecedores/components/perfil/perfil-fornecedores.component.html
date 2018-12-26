@@ -12,10 +12,11 @@
         <p>Total de itens: {{totalItens}}</p>
       </div>
       <div class="card-action">
-        <a >Cadastrar produto</a>
+        <a (click)="enableFormProduct(null)">Cadastrar produto</a>
       </div>
     </div>
   </div>
 </div>
 
-<lista-produtos-page (updateTotalItens)="getTotalItens()" [idFornecedor]="fornecedorProfile.id"></lista-produtos-page>
+<lista-produtos-page (updateProdutoEvent)="enableFormProduct($event)" (updateTotalItens)="getTotalItens()" [idFornecedor]="fornecedorProfile.id" *ngIf="!enableFormProductBoolean"></lista-produtos-page>
+<cadastro-produtos-page (disableFormProduct)="disableFormProduct($event)" [produtoUpdate]="productUpdate" *ngIf="enableFormProductBoolean"></cadastro-produtos-page>

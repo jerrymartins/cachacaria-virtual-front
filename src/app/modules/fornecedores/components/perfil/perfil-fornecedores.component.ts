@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FornecedorDTO} from "../../../../api";
+import {FornecedorDTO, ProdutoDTO} from "../../../../api";
 import {ProdutosService} from "../../../produtos/produtos.service";
 
 @Component({
@@ -12,6 +12,8 @@ export class PerfilFornecedoresComponent implements OnInit{
     @Input() fornecedorProfile: FornecedorDTO;
 
     public totalItens: number;
+    public enableFormProductBoolean: boolean = false;
+    public productUpdate: ProdutoDTO;
 
     constructor(private produtoService: ProdutosService){
 
@@ -23,7 +25,17 @@ export class PerfilFornecedoresComponent implements OnInit{
 
     public getTotalItens(){
         this.produtoService.countTotalItensByFornecedor(this.fornecedorProfile.id).subscribe( res => this.totalItens = res);
-        console.log('teste')
     }
+
+    public enableFormProduct(productUpdate?: ProdutoDTO){
+        this.productUpdate = productUpdate;
+        this.enableFormProductBoolean = true;
+    }
+
+    public disableFormProduct(){
+        this.enableFormProductBoolean = false;
+    }
+
+
 
 }
