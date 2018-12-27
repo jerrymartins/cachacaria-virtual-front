@@ -9,7 +9,14 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "lib": ["es6", "dom"],
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "compilerOptions": {
+      baseUrl: "./",
+      "paths": {
+        "@core/*": ["src/app/core/*"],
+        "@state/*": ["src/app/state/*"]
+      }
+    }
   },
   "exclude": ["node_modules", "src/main.aot.ts"]
 }
