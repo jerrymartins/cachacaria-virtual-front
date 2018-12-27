@@ -18,11 +18,11 @@ export class CadastroProdutosComponent implements OnInit{
     @Input() clear: boolean = false;
     @Output() disableFormProduct = new EventEmitter();
 
-    private form: FormGroup;
-    private action: string;
+    public form: FormGroup;
+    public action: string;
     private readonly notifier: NotifierService;
 
-    private produto: ProdutoDTO = new class implements ProdutoDTO {
+    public produto: ProdutoDTO = new class implements ProdutoDTO {
         codProduto: string;
         descricao: string;
         fornecedor: Fornecedor;

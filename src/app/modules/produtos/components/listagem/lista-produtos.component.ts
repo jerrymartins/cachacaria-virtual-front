@@ -20,8 +20,8 @@ export class ListaProdutosComponent implements OnInit{
   @Output() updateTotalItens = new EventEmitter();
   @Output() updateProdutoEvent = new EventEmitter();
 
-  private produtos: PageProdutoDTO;
-  private pageRequest: PageRequest;
+  public produtos: PageProdutoDTO;
+  public pageRequest: PageRequest;
   private readonly notifier: NotifierService;
 
   private admin: boolean;

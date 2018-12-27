@@ -2,6 +2,7 @@ const webpackMerge            = require('webpack-merge');
 const {AngularCompilerPlugin}                     = require('@ngtools/webpack');
 const UglifyJsPlugin          = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const cssnano                 = require('cssnano');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -10,6 +11,7 @@ const helpers                 = require('./helpers');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'production',
+    devtool: 'source-map',
 
     output: {
         path: helpers.root('dist'),
@@ -47,6 +49,13 @@ module.exports = webpackMerge(commonConfig, {
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 loader: '@ngtools/webpack'
+            },
+            {
+                test: /\.sass$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ]
             }
         ]
     },
@@ -56,6 +65,10 @@ module.exports = webpackMerge(commonConfig, {
             tsConfigPath: helpers.root('tsconfig.aot.json'),
             entryModule: helpers.root('src', 'app', 'app.module#AppModule')
         }),
-        new CompressionPlugin()
+        new CompressionPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
     ]
 });

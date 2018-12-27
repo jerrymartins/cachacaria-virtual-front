@@ -16,11 +16,11 @@ export class CadastroFornecedoresComponent implements OnInit{
     @Input() fornecedorUpdate: FornecedorDTO;
     @Input() clear: boolean = false;
 
-    private form: FormGroup;
-    private action: string;
+    public action: string;
+    public form: FormGroup;
     private readonly notifier: NotifierService;
 
-    private fornecedor: FornecedorDTO = new class implements FornecedorDTO {
+    public fornecedor: FornecedorDTO = new class implements FornecedorDTO {
         cnpj: string;
         email: string;
         id: number;
