@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --inline --hot --progress --port 3000",
     "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
-    "serve-build": "yarn build && serve -s dist"
+    "serve-build": "yarn build && serve -s dist",
+    "test": "jest"
   },
   "dependencies": {
     "@angular/common": "~6.1.10",
@@ -22,6 +23,7 @@
     "@angular/upgrade": "~6.1.10",
     "angular-notifier": "^4.1.1",
     "core-js": "~2.5",
+    "jest": "^23.6.0",
     "materialize-css": "^1.0.0",
     "ngx-pagination": "^3.2.1",
     "rxjs": "~6.3",
